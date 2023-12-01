@@ -4,6 +4,8 @@
  */
 package view;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Geral
@@ -52,6 +54,11 @@ public class Exemplo4 extends javax.swing.JFrame {
         });
 
         jBtnVerificar.setText("Verificar");
+        jBtnVerificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnVerificarActionPerformed(evt);
+            }
+        });
 
         jBtnMarcar.setText("Marcar");
         jBtnMarcar.addActionListener(new java.awt.event.ActionListener() {
@@ -68,6 +75,11 @@ public class Exemplo4 extends javax.swing.JFrame {
         });
 
         jArquivo.setText("Arquivo");
+        jArquivo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jArquivoMouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jArquivo);
 
         jSair.setText("Sair");
@@ -86,23 +98,23 @@ public class Exemplo4 extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jBtnDesmarcar)
-                    .addComponent(jBtnMarcar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jCkbInglês)
+                    .addComponent(jCkbInformática)
                     .addComponent(jBtnVerificar)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jCkbInformática)
-                        .addComponent(jCkbInglês)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jBtnDesmarcar)
+                        .addComponent(jBtnMarcar, javax.swing.GroupLayout.Alignment.LEADING)))
                 .addContainerGap(274, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(45, 45, 45)
+                .addGap(53, 53, 53)
                 .addComponent(jCkbInglês)
                 .addGap(18, 18, 18)
                 .addComponent(jCkbInformática)
-                .addGap(40, 40, 40)
+                .addGap(32, 32, 32)
                 .addComponent(jBtnVerificar)
                 .addGap(18, 18, 18)
                 .addComponent(jBtnMarcar)
@@ -137,6 +149,27 @@ public class Exemplo4 extends javax.swing.JFrame {
     private void jSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSairMouseClicked
         System.exit(0);// TODO add your handling code here:
     }//GEN-LAST:event_jSairMouseClicked
+
+    private void jBtnVerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnVerificarActionPerformed
+        String selecao = "Selecionados ";
+        if(jCkbInglês.isSelected()){
+            selecao+= "\n"+jCkbInglês.getText();
+        }
+        if(jCkbInformática.isSelected()){
+            selecao+= "\n"+jCkbInformática.getText();
+            
+        }
+        JOptionPane.showMessageDialog(null, selecao);
+            if((!jCkbInglês.isSelected()&&(!jCkbInformática.isSelected()))){
+                JOptionPane.showMessageDialog(null, selecao);
+            }else
+                JOptionPane.showMessageDialog(null, "Nenhum curso selecionado!!!");   
+    }//GEN-LAST:event_jBtnVerificarActionPerformed
+
+    private void jArquivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jArquivoMouseClicked
+        Exemplo5 tela = new Exemplo5();
+        tela.setVisible(true);// TODO add your handling code here:
+    }//GEN-LAST:event_jArquivoMouseClicked
 
     /**
      * @param args the command line arguments
